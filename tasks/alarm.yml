@@ -1,0 +1,28 @@
+---
+
+- name: ec2 facts
+  ec2_facts:
+
+- name: CloudWatch Disks Alarm
+  ec2_metric_alarm:
+    state:       present
+    region:      "{{ansible_ec2_placement_region}}"
+    name:        "Disk Usage: {{item.mount}} ({{ansible_ec2_instance_id}})"
+    description: "Disk Usage: {{item.mount}} ({{ansible_ec2_instance_id}})"
+    namespace:   System/Linux
+    dimensions:
+      InstanceId: "{{ansible_ec2_instance_id}}"
+      Filesystem: "{{item.device}}"
+      MountPath:  "{{item.mount}}"
+    metric:      DiskSpaceUtilization
+    statistic:   Average
+    unit:        Percent
+    comparison:  ">"
+    threshold:   80.0
+    period:      300
+    evaluation_periods: 2
+    ok_actions:    "{{aws_notifications_arn}}"
+    alarm_actions: "{{aws_notifications_arn}}"
+  with_items: ansible_mounts
+
+# vi:ts=2:sw=2:et:ft=yaml

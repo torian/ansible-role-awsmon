@@ -1,0 +1,9 @@
+---
+
+- name: Install dependencies (Debian)
+  apt:
+    state="present"
+    name="{{item}}"
+  with_items: awsmon_deps
+
+# vi:ts=2:sw=2:et:ft=yaml

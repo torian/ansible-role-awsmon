@@ -1,0 +1,7 @@
+# << Ansible managed file >>
+
+{% for disk in ansible_mounts %}
+{{awsmon_disk_frecuency}} {{awsmon_disk_user}} {{awsmon_disk_command}} --disk-path={{disk.mount}}
+
+{% endfor %}
+

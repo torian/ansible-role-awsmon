@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Emiliano Castagnari
+  description: Ansible role to install AWS Monitoring Scripts
+  license: Apache
+  min_ansible_version: 1.8
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  - name: RedHat
+  - name: AMZ-Linux
+  categories:
+  - system
+  - monitoring
+dependencies: {}
+
