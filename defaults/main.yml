@@ -7,12 +7,12 @@ awsmon_script_dir:    "{{awsmon_script_prefix}}/aws-scripts-mon"
 
 awsmon_disk_cronfile:  /etc/cron.d/awsmon-disks
 awsmon_disk_frecuency: '* * * * *'
-awsmon_disk_user:      hadoop
+awsmon_disk_user:      root
 awsmon_disk_command:   "perl {{awsmon_script_dir}}/mon-put-instance-data.pl --disk-space-util"
 
 awsmon_mem_cronfile:  /etc/cron.d/awsmon-mem
 awsmon_mem_frecuency: '* * * * *'
-awsmon_mem_user:      hadoop
+awsmon_mem_user:      root
 awsmon_mem_command:   "perl {{awsmon_script_dir}}/mon-put-instance-data.pl --mem-util"
 
 # vi:ts=2:sw=2:et:ft=yaml
