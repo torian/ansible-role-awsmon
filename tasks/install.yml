@@ -1,33 +1,33 @@
 ---
 
 - include: install/Debian.yml
-  sudo: true
+  become: true
   when: ansible_os_family == 'Debian'
 
 - include: install/RedHat.yml
-  sudo: true
+  become: true
   when: ansible_os_family == 'RedHat'
 
 - name: Download CloudWatch Monitoring Script
-  get_url: 
-    url="{{awsmon_script_url}}"
-    dest="{{awsmon_script_file}}"
-    mode="0644"
+  get_url:
+    url: "{{awsmon_script_url}}"
+    dest: "{{awsmon_script_file}}"
+    mode: "0644"
 
 - name: Stat Expanded archive
   stat:
-    path="{{awsmon_script_dir}}"
+    path: "{{awsmon_script_dir}}"
   register: st_archive
 
 - name: Extract CloudWatch monitoring scripts
   unarchive:
-    copy=no
-    src="{{awsmon_script_file}}"
-    dest="{{awsmon_script_prefix}}"
-    owner="root"
-    group="root"
-    mode="0644"
-  sudo: true
+    copy: no
+    src: "{{awsmon_script_file}}"
+    dest: "{{awsmon_script_prefix}}"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  become: true
   when: not st_archive.stat.exists
 
 # vi:ts=2:sw=2:et:ft=yaml

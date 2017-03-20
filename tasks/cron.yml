@@ -2,18 +2,18 @@
 
 - name: Disk Metrics Cronjob
   template:
-    src="etc/cron.d/awsmon-disks.j2"
-    dest="{{awsmon_disk_cronfile}}"
-    owner="root"
-    group="root"
-    mode="0644"
+    src: "etc/cron.d/awsmon-disks.j2"
+    dest: "{{awsmon_disk_cronfile}}"
+    owner: "root"
+    group: "root"
+    mode: "0644"
 
 - name: Memory Metrics Cronjob
   template:
-    src="etc/cron.d/awsmon-mem.j2"
-    dest="{{awsmon_mem_cronfile}}"
-    owner="root"
-    group="root"
-    mode="0644"
+    src: "etc/cron.d/awsmon-mem.j2"
+    dest: "{{awsmon_mem_cronfile}}"
+    owner: "root"
+    group: "root"
+    mode: "0644"
 
 # vi:ts=2:sw=2:et:ft=yaml
