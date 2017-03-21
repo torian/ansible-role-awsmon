@@ -8,10 +8,10 @@
   tags: awsmon_install
 
 - include: cron.yml
-  sudo: true
+  become: true
   tags: awsmon_cron
 
 - include: alarm.yml
   tags: awsmon_alarms
-  
+
 # vi:ts=2:sw=2:et:ft=yaml
